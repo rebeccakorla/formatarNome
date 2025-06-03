@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nome</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Formatação de Nome</h1>
+  
+  <label for="nome">Nome completo:</label>
+  <input type="text" id="nome">
+  
+  <button onclick="mostrarResultado()">Formatar Nome</button>
+<p></p>
+<p></p>
+  <p> Nome formatado:</p>
+  <div id="resultado"></div>
+
+  <script>
+    function formatarNome(nome) {
+ 
+      const juncoes = ['da', 'de', 'do', 'dos', 'das', 'e'];
+
+
+      const partes = nome.split(' ');
+
+
+    
+      const nomeSemJuncoes = partes.filter(parte => !juncoes.includes(parte.toLowerCase()));
+
+
+
+      const sobrenome = nomeSemJuncoes.pop();
+
+
+
+      const nomeFormatado = `${sobrenome}, ${nomeSemJuncoes.join(' ')}`;
+
+
+      return nomeFormatado;
+    }
+
+
+
+    function mostrarResultado() {
+      const nomeInput = document.getElementById('nome').value;
+      if (nomeInput) {
+        const resultado = formatarNome(nomeInput);
+        document.getElementById('resultado').textContent = resultado;
+  
+      } else {
+        document.getElementById('resultado').textContent = 'Por favor, insira um nome.';
+      }
+    }
+
+    
+  </script>
+</body>
+</html>
